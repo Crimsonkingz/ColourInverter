@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Colour Inverter</title>        
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+
+    </head>
+    <body>  
+      
+	<div id="container">
+        <div id="inputColour"></div> <span id="inputText">Input Colour</span>
+
+        <div id="outputColour"></div> <span id="outputText">Output Colour</span>
+	</div>
+   	<div class="sliders">
+				<p>
+					<label for="red">Red</label>
+					<input id="red" name="red" type="range" min=0 max=255 value=255>
+					<input type="number" class="valBox" id="redVal" value=255>
+				</p>
+				<p>
+					<label for="green">Green</label>
+					<input id="green" name="green" type="range" min=0 max=255 value=255>
+					<input type="number" id="greenVal" class="valBox" value=255>
+				</p>
+				<p>
+					<label for="blue">Blue</label>
+					<input id="blue" name="blue" type="range" min=0 max=255 value=255>
+					<input type="number" id="blueVal" class="valBox" value=255>
+				</p>
+	</div>
+		<div class="outputVals">
+				<p>
+					<span>Red</span>					
+					<div id="outputRedVal" class="valBox" >000</div>
+				</p>
+				<p>
+					<span>Green</span>					
+					<div id="outputGreenVal" class="valBox">000</div>
+				</p>
+				<p>
+					<span>Blue</span>
+					<div id="outputBlueVal" class="valBox">000</div>
+				</p>
+	</div>
+    <script src="js/scripts.js" type="text/javascript"></script>
+    </body>
+</html>

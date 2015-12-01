@@ -1,0 +1,149 @@
+#container {
+	width: 1000px;
+	height: 500px;
+	top: 50%;
+	left: 50%;
+	position: absolute;
+	-webkit-transform: translate(-50%, -50%);
+	   -moz-transform: translate(-50%, -50%);
+	    -ms-transform: translate(-50%, -50%);
+	     -o-transform: translate(-50%, -50%);
+	        transform: translate(-50%, -50%);
+	background-color: white;
+	border:black solid 2px;
+	display: flex;
+}
+
+#inputColour {
+	width: 250px;
+	height: 250px;
+	top: 50%;
+	left: 10%;
+	position: absolute;
+	-webkit-transform: translateY(-50%);
+	   -moz-transform: translateY(-50%);
+	    -ms-transform: translateY(-50%);
+	     -o-transform: translateY(-50%);
+	        transform: translateY(-50%);
+	border:black dashed 2px;
+	-webkit-box-shadow: 0px 0px 30px 7px rgba(0,0,0,0.5);
+	-moz-box-shadow: 0px 0px 30px 7px rgba(0,0,0,0.5);
+	box-shadow: 0px 0px 30px 7px rgba(0,0,0,0.5);
+
+}
+
+#inputText {
+	position: absolute;
+	bottom: 10%;
+	left: 25%;
+	display: inline-block;	
+	color: #000;
+	font-weight: bold;
+	
+	-webkit-transform: translateX(-50%);
+	   -moz-transform: translateX(-50%);
+	    -ms-transform: translateX(-50%);
+	     -o-transform: translateX(-50%);
+	        transform: translateX(-50%);
+
+ }
+
+#outputColour {
+	width: 250px;
+	height: 250px;
+	top: 50%;
+	right: 10%;
+	position: absolute;
+	-webkit-transform: translateY(-50%);
+	   -moz-transform: translateY(-50%);
+	    -ms-transform: translateY(-50%);
+	     -o-transform: translateY(-50%);
+	        transform: translateY(-50%);
+	border:black dashed 2px;
+	-webkit-box-shadow: 0px 0px 30px 7px rgba(0,0,0,0.5);
+	-moz-box-shadow: 0px 0px 30px 7px rgba(0,0,0,0.5);
+	box-shadow: 0px 0px 30px 7px rgba(0,0,0,0.5);
+	
+	
+}
+
+#outputText {
+	position: absolute;
+	bottom: 10%;
+	right: 25%;
+	display: inline-block;
+
+	color: #000;
+	font-weight: bold;
+	-webkit-transform: translateX(50%);
+	   -moz-transform: translateX(50%);
+	    -ms-transform: translateX(50%);
+	     -o-transform: translateX(50%);
+	        transform: translateX(50%);
+	
+}
+
+.sliders {
+	position: absolute;
+	background-color: #BBB;
+	width: 300px;
+	height: auto;
+	padding-bottom: 10px;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	   -moz-transform: translateY(-50%);
+	    -ms-transform: translateY(-50%);
+	     -o-transform: translateY(-50%);
+	        transform: translateY(-50%);
+    display: inline-block;
+
+}
+
+.sliders p, .outputVals p {
+	margin: 8px 10px;
+	color: #000;
+	font-weight: bold;
+	display: inline-block;
+	position: relative;
+
+
+	
+}
+.sliders label {
+	position: relative;
+	display: inline-block;
+	margin: 0 10px 0 0;
+	width: 35px;
+	font-size: 16px;
+	
+}
+.sliders input {
+	position: relative;
+	top: 2px;
+}
+
+.valBox {
+	margin: 0 5%;
+	display: inline-block;
+	position: absolute;
+	width:15%;
+	background-color: #FFF;
+	text-align: center;
+}
+
+.outputVals {
+		position: absolute;
+	background-color: #BBB;
+	width: 100px;
+	height: auto;
+	padding-bottom: 10px;
+	top: 50%;
+	right: 0%;
+	-webkit-transform: translateY(-50%);
+	   -moz-transform: translateY(-50%);
+	    -ms-transform: translateY(-50%);
+	     -o-transform: translateY(-50%);
+	        transform: translateY(-50%);
+    display: inline-block;
+    margin-right: 10px;
+}
