@@ -132,10 +132,10 @@ var toHSL = function(red, green, blue) {
 
 	var hue = (180/Math.PI) * Math.acos((red - (green/2) - (blue/2)) / Math.sqrt((red*red) + (green*green) + (blue*blue) - (red*green) - (red*blue) - (blue*green)));
 	
-	if (blue < green) {
+	if (blue > green) {
 		// --------- ERROR IS HERE ------------
-		// Test R = 255, Green = 0 to 15, Blue = 122
-		hue = hue - 360;
+		// Test R = 255, Green = 1 to 2 OR 9 to 10 OR 12 to 13 OR 99 to 100, Blue = 122
+		hue = 360 - hue;
 	}
 	if (isNaN(hue)) {
 		hue = 0;
