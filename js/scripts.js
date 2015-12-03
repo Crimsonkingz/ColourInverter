@@ -115,6 +115,10 @@ var updateInputSlider = function() {
 // Returns an object with hue, saturation and lightness properties
 var toHSL = function(red, green, blue) {
 
+	var redFrac = red/255;
+	var greenFrac= green/255;
+	var blueFrac = blue/255;
+
 	var max = Math.max(red,green,blue);
 	var min = Math.min(red,green,blue);
 	var dist = (max - min) / 255;
@@ -129,17 +133,40 @@ var toHSL = function(red, green, blue) {
 	else {
 		var saturation = 0;
 	}
+	if (max === min) {
+		var saturation = 0;
+		var hue = 0;
+	}
+	else if (max === red) {
+		console.log("RED");
+		var hue = ((greenFrac - blueFrac)/dist) % 6;
+	}
+	else if (max === green) {
+		console.log("GREEN");
+		var hue = ((blueFrac - redFrac)/dist) + 2;
+	}
+	else if (max === blue) {
+		console.log("BLUE");
+		var hue = ((redFrac - greenFrac)/dist) + 4;
+	}
+	else {
+		console.log("NONE");
+		var hue = 0;
+	}
 
+	hue = hue * 60;
 	var hue = (180/Math.PI) * Math.acos((red - (green/2) - (blue/2)) / Math.sqrt((red*red) + (green*green) + (blue*blue) - (red*green) - (red*blue) - (blue*green)));
 	
 	if (blue > green) {
-		// --------- ERROR IS HERE ------------
-		// Test R = 255, Green = 1 to 2 OR 9 to 10 OR 12 to 13 OR 99 to 100, Blue = 122
+	// 	// --------- ERROR IS HERE ------------
+	// 	// Test R = 255, Green = 1 to 2 OR 9 to 10 OR 12 to 13 OR 99 to 100, Blue = 122
 		hue = 360 - hue;
 	}
 	if (isNaN(hue)) {
 		hue = 0;
 	}
+
+
 	console.log(hue);
 	hue = Math.round(hue);
 	return {
@@ -153,10 +180,10 @@ var toHSL = function(red, green, blue) {
 // Returns an object with red, green and blue properties
 var toRGB = function(hue, saturation, lightness) {
 	var dist = saturation * (1-Math.abs((2*lightness) - 1));
-
-	var min = 255 * (lightness - (dist/2));
-	
+		
 	var x = dist * (1-Math.abs(((hue/60) % 2) - 1));
+
+	var min = (lightness - (dist/2));
 
 	var red, 
 		blue, 
@@ -165,45 +192,49 @@ var toRGB = function(hue, saturation, lightness) {
 		
 	if (hue >= 0 && hue < 60) {
 
-		red = (255*dist) + min;
-		green = (255*x) + min;
-		blue = min;
+		red = dist;
+		green = x
+		blue = 0;
 	}
 	else if (hue >= 60 && hue < 120) {
-		red = (255*x) + min;
-		green = (255*dist) + min;
-		blue = min;
+		red = x;
+		green = dist;
+		blue = 0;
 	}
 	else if (hue >= 120 && hue < 180) {
-		red = min;
-		green = (255*dist) + min;
-		blue = (255*x) + min;
+		red = 0;
+		green = dist;
+		blue = x;
 	}
 	else if (hue >= 180 && hue < 240) {
-		red = min;
-		green = (255*x) + min;
-		blue = (255*dist) + min;
+		red = 0;
+		green = x;
+		blue = dist;
 	}
 	else if (hue >= 240 && hue < 300) {
-		red = (255*x) + min;
-		green = min;
-		blue = (255*dist) + min;
+		red = x;
+		green = 0;
+		blue = dist;
 	}
-	else if (hue >= 300 && hue <= 360) {
-		red = (255*dist) + min;
-		green = min;
-		blue = (255*x) + min;
+	else if (hue >= 300 && hue < 360) {
+		red = dist;
+		green = 0;
+		blue = x;
 	}
 	else {
-		
+		red = 0;
+		green = 0;
+		blue = 0;
 		console.log("HUE NOT IN BOUNDS");
 	}
-
-	red = Math.round(red);
-	green = Math.round(green);
-	blue = Math.round(blue);
 	
-	
+	red = Math.round((red+min) * 255);
+	green = Math.round((green+min) * 255);
+	blue = Math.round((blue+min) * 255);
+	// console.log("RED: " + red);
+	// console.log("GREEN: " + green);
+	// console.log("BLUE: " + blue);
+		
 	return {
 		red: red,
 		green: green,
